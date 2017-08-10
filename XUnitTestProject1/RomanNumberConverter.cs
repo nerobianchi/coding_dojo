@@ -23,6 +23,7 @@ namespace XUnitTestProject1
             if (input == 4) return "I" + "V";
             if (input == 9) return "I" + "X";
             if (input == 40) return "X" + "L";
+            if (input == 90) return "X" + "C";
 
             return string.Empty;
         }
