@@ -52,7 +52,7 @@ namespace XUnitTestProject1
     {
         private readonly IList<object[]> data = new List<object[]>{
                                                      new object[]{4,"IV"},
-                                                     //new object[]{9,"IX"},
+                                                     new object[]{9,"IX"},
                                                      // new object[]{40,"XL"},
                                                      // new object[]{90,"LC"},
                                                      // new object[]{400,"CD"},

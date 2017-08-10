@@ -21,6 +21,7 @@ namespace XUnitTestProject1
             if (this.arabicToRomanDictionary.ContainsKey(input)) { return this.arabicToRomanDictionary[input]; }
 
             if (input == 4) return "I" + "V";
+            if (input == 9) return "I" + "X";
 
             return string.Empty;
         }
