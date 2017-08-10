@@ -36,15 +36,13 @@ namespace XUnitTestProject1
 
         private string Normalize(string romanNumber)
         {
-//            return romanNumber
-//                              .Replace("DCCCC", "CM")
-//                              .Replace("CCCC", "CD")
-//                              .Replace("LXXXX", "XC")
-//                              .Replace("XXXX", "XL")
-//                              .Replace("VIIII", "IX")
-//                              .Replace("IIII", "IV")
-//                ;
-//            
+//                              ("DCCCC", "CM")
+//                              ("CCCC", "CD")
+//                              ("LXXXX", "XC")
+//                              ("XXXX", "XL")
+//                              ("VIIII", "IX")
+//                              ("IIII", "IV")
+
             List<string> list = new List<string>(this.arabicToRomanDictionary.Values);
             for (int i = 1; i < list.Count; i = i + 2)
             {
@@ -55,6 +53,7 @@ namespace XUnitTestProject1
                 romanNumber = romanNumber.Replace(high + repeated, low + highLord);
                 romanNumber = romanNumber.Replace(repeated, low + high);
             }
+            
             return romanNumber;
         }
 
