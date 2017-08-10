@@ -20,7 +20,7 @@ namespace XUnitTestProject1
         {
             if (this.arabicToRomanDictionary.ContainsKey(input)) { return this.arabicToRomanDictionary[input]; }
 
-            if (input == 4) return "IV";
+            if (input == 4) return "I" + "V";
 
             return string.Empty;
         }
