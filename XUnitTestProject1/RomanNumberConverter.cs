@@ -4,21 +4,23 @@ namespace XUnitTestProject1
 {
     public class RomanNumberConverter
     {
-        private readonly Dictionary<int, string> arabicToRomanDictionary = new Dictionary<int, string>();
-
-        public RomanNumberConverter()
+        private readonly Dictionary<int, string> arabicToRomanDictionary = new Dictionary<int, string>
         {
-            this.arabicToRomanDictionary.Add(1, "I");
-            this.arabicToRomanDictionary.Add(5, "V");
-            this.arabicToRomanDictionary.Add(10, "X");
-            this.arabicToRomanDictionary.Add(50, "L");
-            this.arabicToRomanDictionary.Add(100, "C");
-            this.arabicToRomanDictionary.Add(500, "D");
-            this.arabicToRomanDictionary.Add(1000, "M");
-        }
+            {1, "I"},
+            {5, "V"},
+            {10, "X"},
+            {50, "L"},
+            {100, "C"},
+            {500, "D"},
+            {1000, "M"}
+        };
+
         public string ConvertToRomanNumber(int input)
         {
-            if (this.arabicToRomanDictionary.ContainsKey(input)) { return this.arabicToRomanDictionary[input]; }
+            if (this.arabicToRomanDictionary.ContainsKey(input))
+            {
+                return this.arabicToRomanDictionary[input];
+            }
 
             if (input == 4) return "I" + "V";
             if (input == 9) return "I" + "X";
