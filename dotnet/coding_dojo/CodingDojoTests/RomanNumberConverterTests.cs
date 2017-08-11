@@ -18,8 +18,8 @@ namespace XUnitTestProject1
         }
 
         [Theory]
-        [ClassData(typeof(SubtructedInput))]
-        public void given_subtructed_numbers_for_roman_when_converting_then_success(int input, string expected)
+        [ClassData(typeof(SubstructedInput))]
+        public void given_substructed_numbers_for_roman_when_converting_then_success(int input, string expected)
         {
             RomanNumberConverter sut = new RomanNumberConverter();
             string actual = sut.ConvertToRomanNumber(input);
@@ -74,7 +74,7 @@ namespace XUnitTestProject1
         }
     }
 
-    internal class SubtructedInput : IEnumerable<object[]>
+    internal class SubstructedInput : IEnumerable<object[]>
     {
         private readonly IList<object[]> data = new List<object[]>
         {
