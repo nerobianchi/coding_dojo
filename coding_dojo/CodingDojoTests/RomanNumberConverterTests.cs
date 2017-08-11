@@ -8,7 +8,7 @@ namespace XUnitTestProject1
 {
     public class RomanNumberConverterTests
     {
-        [Theory]
+        [Theory(DisplayName = "asd" )]
         [ClassData(typeof(PrimitiveInput))]
         public void given_primitive_numbers_for_roman_when_converting_then_success(int input, string expected)
         {
