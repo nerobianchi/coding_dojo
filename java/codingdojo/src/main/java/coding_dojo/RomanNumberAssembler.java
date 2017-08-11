@@ -22,27 +22,72 @@ public class RomanNumberAssembler {
         }
 
 
-        List<Integer> list = new ArrayList<Integer>(this.arabicToRomanMap.keySet());
+//        for (int i = 1; i < list.size() - 1; i = i + 2) {
+//
+//            int high = list.get(i);
+//            String high_roman = this.arabicToRomanMap.get(high);
+//
+//            int low = list.get(i + 1);
+//            String low_roman = this.arabicToRomanMap.get(low);
+//
+//            int highLord = list.get(i - 1);
+//            String highLord_roman = this.arabicToRomanMap.get(highLord);
+//
+//            if (number == high - low) {
+//                return low_roman + high_roman;
+//            }
+//            if (number == highLord - low) {
+//                return low_roman + highLord_roman;
+//            }
+//        }
+
+        StringBuilder sb = new StringBuilder();
+        while (number > 0) {
+            Integer divisor = this.getDivisor(number);
+
+            sb.append(this.arabicToRomanMap.get(divisor));
+
+            number -= divisor;
+
+
+        }
+        String romanNumber = this.normalize(sb.toString());
+
+        return romanNumber;
+    }
+
+    private Integer getDivisor(Integer number) {
+        List<Integer> list = new ArrayList<>(this.arabicToRomanMap.keySet());
+
+        for (int i = 0; i < list.size(); i++) {
+            Integer primitive = list.get(i);
+            if (number / primitive > 0) {
+                return primitive;
+            }
+        }
+        return 0;
+    }
+
+    private String normalize(String number) {
+
+        List<String> list = new ArrayList<>(this.arabicToRomanMap.values());
 
         for (int i = 1; i < list.size() - 1; i = i + 2) {
 
-            int high = list.get(i);
-            String high_roman = this.arabicToRomanMap.get(high);
+            String high = list.get(i);
+            String low = list.get(i + 1);
+            String highLord = list.get(i - 1);
+            String low_repeated = String.join("", Collections.nCopies(4, low));
 
-            int low = list.get(i+1);
-            String low_roman = this.arabicToRomanMap.get(low);
-
-            int highLord = list.get(i-1);;
-            String highLord_roman = this.arabicToRomanMap.get(highLord);
-
-            if (number == high - low) {
-                return low_roman + high_roman;
+            if (number.contains(high + low_repeated)) {
+                number = number.replace(high + low_repeated, low + highLord);
             }
-            if (number == highLord - low) {
-                return low_roman + highLord_roman;
+            if (number.contains(low_repeated)) {
+                number = number.replace(low_repeated, low + high);
             }
         }
-        
-        return "";
+
+
+        return number;
     }
 }
