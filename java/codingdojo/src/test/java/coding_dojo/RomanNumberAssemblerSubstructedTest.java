@@ -22,7 +22,7 @@ public class RomanNumberAssemblerSubstructedTest {
     }
 
     @Test
-    public void given_primitive_numbers_when_converting_to_roman_number_then_it_should_converted_successfully() throws Exception {
+    public void given_substructed_numbers_when_converting_to_roman_number_then_it_should_converted_successfully() throws Exception {
         RomanNumberAssembler sut = new RomanNumberAssembler();
         String actual = sut.convertToRomanNumber(number);
 

@@ -21,26 +21,6 @@ public class RomanNumberAssembler {
             return this.arabicToRomanMap.get(number);
         }
 
-
-//        for (int i = 1; i < list.size() - 1; i = i + 2) {
-//
-//            int high = list.get(i);
-//            String high_roman = this.arabicToRomanMap.get(high);
-//
-//            int low = list.get(i + 1);
-//            String low_roman = this.arabicToRomanMap.get(low);
-//
-//            int highLord = list.get(i - 1);
-//            String highLord_roman = this.arabicToRomanMap.get(highLord);
-//
-//            if (number == high - low) {
-//                return low_roman + high_roman;
-//            }
-//            if (number == highLord - low) {
-//                return low_roman + highLord_roman;
-//            }
-//        }
-
         StringBuilder sb = new StringBuilder();
         while (number > 0) {
             Integer divisor = this.getDivisor(number);
@@ -48,8 +28,6 @@ public class RomanNumberAssembler {
             sb.append(this.arabicToRomanMap.get(divisor));
 
             number -= divisor;
-
-
         }
         String romanNumber = this.normalize(sb.toString());
 
@@ -59,8 +37,7 @@ public class RomanNumberAssembler {
     private Integer getDivisor(Integer number) {
         List<Integer> list = new ArrayList<>(this.arabicToRomanMap.keySet());
 
-        for (int i = 0; i < list.size(); i++) {
-            Integer primitive = list.get(i);
+        for (Integer primitive : list) {
             if (number / primitive > 0) {
                 return primitive;
             }
