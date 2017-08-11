@@ -32,8 +32,13 @@ public class RomanNumberAssemblerTest {
 
     @Parameterized.Parameters
     public static Collection<Object[]> data() {
-        return Arrays.asList(new Object[][]{
-                new Object[]{1,"I"}
-        });
+        return Arrays.asList(
+                new Object[]{1, "I"},
+                new Object[]{5, "V"},
+                new Object[]{10, "X"},
+                new Object[]{50, "L"},
+                new Object[]{100, "C"},
+                new Object[]{500, "D"},
+                new Object[]{1000, "M"});
     }
 }
