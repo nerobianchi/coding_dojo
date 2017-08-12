@@ -37,6 +37,9 @@ public class RomanNumberAssemblerComplexTest {
                 new Object[]{1989, "MCMLXXXIX"},
                 new Object[]{89, "LXXXIX"},
                 new Object[]{99, "XCIX"},
-                new Object[]{49, "XLIX"});
+                new Object[]{49, "XLIX"},
+                new Object[]{4999, "MMMMCMXCIX"},
+                new Object[]{4000, "MMMM"}
+                );
     }
 }
