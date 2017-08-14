@@ -17,7 +17,7 @@ class RomanNumberAssembler:
         if number >= 100:
             return self.get_substructed_thousands(number)
         if number >= 10:
-            return self.get_substructed_hundreds(number)
+            return self.get_substructed_hundreds(number, 50, 10, 100, "L", "X", "C")
         if number >= 1:
             return self.get_substructed_tens(number, 5, 1, 10, "V", "I", "X")
 
@@ -40,11 +40,11 @@ class RomanNumberAssembler:
         if number == high_lord - low:
             return low_roman + high_lord_roman
 
-    def get_substructed_hundreds(self, number):
-        if number == 50 - 10:
-            return "X" + "L"
-        if number == 100 - 10:
-            return "X" + "C"
+    def get_substructed_hundreds(self, number, high, low, high_lord, high_roman, low_roman, high_lord_roman):
+        if number == high - low:
+            return low_roman + high_roman
+        if number == high_lord - low:
+            return low_roman + high_lord_roman
 
     def get_substructed_thousands(self, number):
         if number == 500 - 100:
