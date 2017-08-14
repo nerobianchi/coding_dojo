@@ -1,12 +1,12 @@
 class RomanNumberAssembler:
     mapping = {
-        1: "I",
-        5: "V",
-        10: "X",
-        50: "L",
-        100: "C",
+        1000: "M",
         500: "D",
-        1000: "M"
+        100: "C",
+        50: "L",
+        10: "X",
+        5: "V",
+        1: "I"
     }
 
     def convert(self, number):
@@ -23,10 +23,15 @@ class RomanNumberAssembler:
             return low_roman + high_lord_roman
 
     def try_subtracted(self, number):
-        if number >= 100:
-            return self.get_subtracted(number, 500, 100, 1000, "D", "C", "M")
-        if number >= 10:
-            return self.get_subtracted(number, 50, 10, 100, "L", "X", "C")
-        if number >= 1:
-            return self.get_subtracted(number, 5, 1, 10, "V", "I", "X")
+        numbers = list(self.mapping.keys())
 
+        for i in range(2, len(numbers),2):
+            low = numbers[i]
+            high = numbers[i - 1]
+            high_lord = numbers[i - 2]
+            high_roman = self.mapping.get(high)
+            low_roman = self.mapping.get(low)
+            high_lord_roman = self.mapping.get(high_lord)
+
+            if number >= low:
+                return self.get_subtracted(number, high, low, high_lord, high_roman, low_roman, high_lord_roman)
