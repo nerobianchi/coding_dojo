@@ -24,6 +24,19 @@ class RomanNumberAssemblerTests(TestCase):
         actual = sut.convert(number)
         assert_that(expected).is_equal_to(actual)
 
+    @parameterized.expand([
+        (4, "IV"),
+        (9, "IX"),
+        (40, "XL"),
+        (90, "XC"),
+        (400, "CD"),
+        (900, "CM"),
+    ])
+    def test_given_substructed_numbers_when_converting_to_roman_number_then_it_should_converted_successfully(self,number,expected):
+        sut = RomanNumberAssembler()
+        actual = sut.convert(number)
+        assert_that(expected).is_equal_to(actual)
+
 
 if __name__ == '__main__':
     unittest.main()
