@@ -16,16 +16,10 @@ class RomanNumberAssembler:
 
         return self.try_subtracted(number)
 
-    def get_subtracted(self, number, high, low, high_lord, high_roman, low_roman, high_lord_roman):
-        if number == high - low:
-            return low_roman + high_roman
-        if number == high_lord - low:
-            return low_roman + high_lord_roman
-
     def try_subtracted(self, number):
         numbers = list(self.mapping.keys())
 
-        for i in range(2, len(numbers),2):
+        for i in range(2, len(numbers), 2):
             low = numbers[i]
             high = numbers[i - 1]
             high_lord = numbers[i - 2]
@@ -35,3 +29,9 @@ class RomanNumberAssembler:
 
             if number >= low:
                 return self.get_subtracted(number, high, low, high_lord, high_roman, low_roman, high_lord_roman)
+
+    def get_subtracted(self, number, high, low, high_lord, high_roman, low_roman, high_lord_roman):
+        if number == high - low:
+            return low_roman + high_roman
+        if number == high_lord - low:
+            return low_roman + high_lord_roman
