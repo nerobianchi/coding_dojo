@@ -14,15 +14,15 @@ class RomanNumberAssembler:
         if roman_mapping is not None:
             return roman_mapping
 
-        if number == 4:
-            return "IV"
-        if number == 9:
-            return "IX"
-        if number == 40:
-            return "XL"
-        if number == 90:
-            return "XC"
-        if number == 400:
-            return "CD"
-        if number == 900:
-            return "CM"
+        if number == 5 - 1:
+            return "I" + "V"
+        if number == 10 - 1:
+            return "I" + "X"
+        if number == 50 - 10:
+            return "X" + "L"
+        if number == 100 - 10:
+            return "X" + "C"
+        if number == 500 - 100:
+            return "C" + "D"
+        if number == 1000 - 100:
+            return "C" + "M"
