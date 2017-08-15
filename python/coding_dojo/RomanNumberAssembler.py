@@ -17,7 +17,7 @@ class RomanNumberAssembler:
         roman_number = ""
         while number > 0:
             divisor, roman = self.get_divisor(number)
-            roman_number = roman_number + roman
+            roman_number += roman
             number -= divisor
 
         return self.normalize(roman_number)
