@@ -14,24 +14,29 @@ class RomanNumberAssembler:
         if roman_mapping is not None:
             return roman_mapping
 
-        return self.try_subtracted(number)
+        roman_number = ""
+        while number > 0:
+            divisor = self.get_divisor(number)
+            roman = self.mapping.get(divisor)
+            roman_number = roman_number + roman
+            number = number - divisor
+        return self.normalize(roman_number)
 
-    def try_subtracted(self, number):
+    def get_divisor(self, number):
         numbers = list(self.mapping.keys())
+        for i in numbers:
+            if number / i >= 1:
+                return i
 
-        for i in range(2, len(numbers), 2):
-            low = numbers[i]
-            high = numbers[i - 1]
-            high_lord = numbers[i - 2]
-            high_roman = self.mapping.get(high)
-            low_roman = self.mapping.get(low)
-            high_lord_roman = self.mapping.get(high_lord)
+    def normalize(self, roman_number):
 
-            if number >= low:
-                return self.get_subtracted(number, high, low, high_lord, high_roman, low_roman, high_lord_roman)
+        values = list(self.mapping.values())
 
-    def get_subtracted(self, number, high, low, high_lord, high_roman, low_roman, high_lord_roman):
-        if number == high - low:
-            return low_roman + high_roman
-        if number == high_lord - low:
-            return low_roman + high_lord_roman
+        for i in range(2, len(values), 2):
+            repeated_low = values[i] * 4
+            low = values[i]
+            high = values[i - 1]
+            high_lord = values[i - 2]
+            roman_number = roman_number.replace(high + repeated_low, low + high_lord).replace(repeated_low, low + high)
+
+        return roman_number

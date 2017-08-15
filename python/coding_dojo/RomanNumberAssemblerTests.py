@@ -32,9 +32,25 @@ class RomanNumberAssemblerTests(TestCase):
         (400, "CD"),
         (900, "CM"),
     ])
-    def test_given_substructed_numbers_when_converting_to_roman_number_then_it_should_converted_successfully(self,
-                                                                                                             number,
-                                                                                                             expected):
+    def test_given_subtracted_numbers_when_converting_to_roman_number_then_it_should_converted_successfully(self,
+                                                                                                            number,
+                                                                                                            expected):
+        sut = RomanNumberAssembler()
+        actual = sut.convert(number)
+        assert_that(expected).is_equal_to(actual)
+
+    @parameterized.expand([
+        (1066, "MLXVI"),
+        (1989, "MCMLXXXIX"),
+        (89, "LXXXIX"),
+        (99, "XCIX"),
+        (49, "XLIX"),
+        (4999, "MMMMCMXCIX"),
+        (4000, "MMMM")
+    ])
+    def test_given_complex_numbers_when_converting_to_roman_number_then_it_should_converted_successfully(self,
+                                                                                                         number,
+                                                                                                         expected):
         sut = RomanNumberAssembler()
         actual = sut.convert(number)
         assert_that(expected).is_equal_to(actual)
