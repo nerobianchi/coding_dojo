@@ -16,20 +16,18 @@ class RomanNumberAssembler:
 
         roman_number = ""
         while number > 0:
-            divisor = self.get_divisor(number)
-            roman = self.mapping.get(divisor)
+            divisor, roman = self.get_divisor(number)
             roman_number = roman_number + roman
-            number = number - divisor
+            number -= divisor
+
         return self.normalize(roman_number)
 
     def get_divisor(self, number):
-        numbers = list(self.mapping.keys())
-        for i in numbers:
-            if number / i >= 1:
-                return i
+        for k, v in self.mapping.items():
+            if number / k >= 1:
+                return k, v
 
     def normalize(self, roman_number):
-
         values = list(self.mapping.values())
 
         for i in range(2, len(values), 2):
