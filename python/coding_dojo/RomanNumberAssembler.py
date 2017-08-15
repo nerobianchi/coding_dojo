@@ -33,8 +33,8 @@ class RomanNumberAssembler:
         values = list(self.mapping.values())
 
         for i in range(2, len(values), 2):
-            repeated_low = values[i] * 4
             low = values[i]
+            repeated_low = low * 4
             high = values[i - 1]
             high_lord = values[i - 2]
             roman_number = roman_number.replace(high + repeated_low, low + high_lord).replace(repeated_low, low + high)
